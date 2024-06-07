@@ -33,7 +33,7 @@ jobs:
           LINTER_RULES_PATH: ./tools/pr-checker/linters/
           DEFAULT_BRANCH: prod
       - name: Summary
-       if: "! github.event.pull_request.head.repo.fork"
+      if: "! github.event.pull_request.head.repo.fork"
         run: |
             < ./checker.log tail -n +2; echo "====== Super Linter ======"
             < ./super-linter.log sed -n '/.*The script has completed.*/,$p' | tail -n +4 | sed  's/.*\(\[[A-Z]\+\]\)/\1/'
